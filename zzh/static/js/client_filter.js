@@ -17,12 +17,6 @@ $(document).ready(function(){
     $m_a.hide();
 
     //筛选标签的hover样式
-   /* $(".filter li>a").hover(function(){
-        $(this).css({"color":"#D11C00","font-weight":600});
-    },function(){
-        $(this).css({"color":"#7b7b7b","font-weight":500});
-    });
-    */
     $(".filter li>a").bind("mouseenter.filter",function(){
         $(this).css({"color":"#D11C00","font-weight":600});
     });
@@ -43,25 +37,10 @@ $(document).ready(function(){
         var $left1 = $(this).offset().left;
         var $left2 = $(this).prev(".progress-bar").offset().left;
         var $offleft = $left1 - $left2;
-        console.log($offleft);
         if($offleft > 50){
             $(this).addClass("info-bug");
         }
     })
-
-    //项目列表阴影以及进度条动画效果
-    $(".list-content").hover(function(){
-        $(this).css("box-shadow","0px 0px 10px #656565");
-        var $bar = $(this).find(".progress-bar");
-        if(! $bar.is(":animated"))
-            var $info = $bar.next();
-            var $width = $info.text();
-            $bar.animate({width:$width},500);
-    },function(){
-        $(this).css("box-shadow","0px 0px 0px");
-        var $bar = $(this).find(".progress-bar");
-        $bar.stop(true).animate({width:0},'fast');
-    });
 
     //一行末尾更多和多选按钮的样式
     $(".multiple,.more").hover(function(){
@@ -70,9 +49,23 @@ $(document).ready(function(){
         $(this).css("box-shadow","0px 0px 0px");
     });
 
+    //项目列表阴影以及进度条动画效果
+    $(".list-content").hover(function(){
+        $(this).css("box-shadow","0px 0px 10px #656565");
+        var $bar = $(this).find(".progress-bar");
+        if(! $bar.is(":animated"))
+            var $info = $bar.next();
+        var $width = $info.text();
+        $bar.animate({width:$width,opacity:"1"},500);
+    },function(){
+        $(this).css("box-shadow","0px 0px 0px");
+        var $bar = $(this).find(".progress-bar");
+        $bar.stop(true).animate({width:"0",opacity:"1"},'fast');
+    });
+
     //更多
-    //****绝对重要提示1：不能通过定义变量的形式对上一个变量进行引用，每一条选择器必须有$(this)，也就是变量初始化后不能在用于初始化另一个变量****
-    //****绝对重要提示2：当使用children后代选择器的时候，为了避免不必要的麻烦，应该尽量使用带参数的，比如元素名称或者类名，因为使用bootstrap存在before以及after的伪类，也算dom树结构的一个节点****
+    //****提示：不能通过定义变量的形式对上一个变量进行引用，每一条选择器必须有$(this)，也就是变量初始化后不能在用于初始化另一个变量****
+    //****绝对重要提示：当使用children后代选择器的时候，为了避免不必要的麻烦，应该尽量使用带参数的，比如元素名称或者类名，因为使用bootstrap存在before以及after的伪类，也算dom树结构的一个节点****
     $(".more").each(function(){
             $(this).click(function(){
                 var $f_head = $(this).parent().children(".f-head");
@@ -211,7 +204,7 @@ $(document).ready(function(){
                     $(this).css({"color":"#7b7b7b","font-weight":500});
                 });
             });
-            //其他
+            //其他样式
             $icon_change.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
             $text_change.text(" 更多");
             if ($hidden_li.length > 0) {
@@ -230,34 +223,126 @@ $(document).ready(function(){
         });
     });
 
+    //test data
+    var obj1 ={
+        title:"四川省科学技术厅关于组织申报国家重点研发计划纳米科技等重点专项2016年度项目的通知",
+        label:"纳米项目",
+        hot:"高精尖",
+        af:"四川省科技厅",
+        edu:"6万~2000万",
+        img:"../static/images/a1.jpg",
+        percent:"40%",
+        start:"2016.02.06",
+        stop:"2016.09.30",
+        sum:"11"
+    },
+     obj2 ={
+        title:"科技部关于发布国家重点研发计划重大慢性非传染性疾病防控研究等重点专项2016年度项目申报指南的通知",
+        label:"创新项目",
+        hot:"成功率高",
+        af:"科技部",
+        edu:"6万~2000万",
+        img:"../static/images/a2.jpg",
+        percent:"70%",
+        start:"2016.02.06",
+        stop:"2016.09.30",
+         sum:"121"
+     },
+        obj3 ={
+            title:"科技部关于发布国家重点研发计划精准医学研究等重点专项2016年度项目申报指南的通知",
+            label:"医学项目",
+            hot:"精准医学",
+            af:"科技部",
+            edu:"6万~2000万",
+            img:"../static/images/a3.jpg",
+            percent:"20%",
+            start:"2016.02.06",
+            stop:"2016.09.30",
+            sum:"234"
+        },
+        obj4 ={
+            title:"关于组织“新一代宽带无线移动通信网”国家科技重大专项2016年度课题申报的通知",
+            label:"互联网项目",
+            hot:"新兴产业",
+            af:"四川省科技厅",
+            edu:"6万~2000万",
+            img:"../static/images/a4.jpg",
+            percent:"90%",
+            start:"2016.02.06",
+            stop:"2016.09.30",
+            sum:"0"
+        },
+        obj5 ={
+            title:"科技部关于发布国家科技支撑计划第二批项目申报指南的通知",
+            label:"扶持项目",
+            hot:"成功率高",
+            af:"四川省科技厅",
+            edu:"6万~2000万",
+            img:"../static/images/a5.jpg",
+            percent:"10%",
+            start:"2016.02.06",
+            stop:"2016.09.30",
+            sum:"78"
+        },
+        obj6 ={
+            title:"四川省科学技术厅关于组织申报国家重点研发计划纳米科技等重点专项2016年度项目的通知",
+            label:"纳米技术",
+            hot:"业界创新",
+            af:"四川省科技厅",
+            edu:"6万~2000万",
+            img:"../static/images/a6.jpg",
+            percent:"20%",
+            start:"2016.02.06",
+            stop:"2016.09.30",
+            sum:"190"
+        };
+    var data = new Array(obj1,obj2,obj3,obj4,obj5,obj6);
+    console.log(data);
+    //全局ajax请求次数
+    var req_times = 0;
+    //滚动条到达底部触发ajax请求
+    $(window).scroll(function(){
+        if($("#load").is(":hidden")){ //用load的隐藏或者显示来标示一次请求是否在进行或者结束
+            var $last = $(".list-content").last();
+            var lastheight = $last.get(0).offsetTop + $last.height(); //使用get(0)获取到js原生对象  offsetTop指的是相对于整个dom的顶端的距离
+            var documentheight =window.innerHeight;  //获取当前视图容器的高度
+            var scrolltop = document.body.scrollTop;  //获得滚动条已经滚动过的高度
+            if(lastheight < scrolltop + documentheight ){
+                console.log(lastheight);
+                console.log(scrolltop);
+                console.log(documentheight);
+                $("#load").show();
+                $.ajax({
+                    url:"www.baidu.com",
+                    data:{
+                        times:req_times
+                    }
+                }).fail(function(){
+                   //console.log(data[0].title);
+                    $.each(data,function(index,obj){
+                        //$last.clone().appendTo("#list").css("opacity","0.5").animate({opacity:"1"},200);
+                        $last.clone(true).appendTo("#list").css("opacity","0.2");  //传递参数true，使复制事件，默认为false
+                        var $last_now = $(".list-content").last();
+                        $last_now.find(".title > a").text(obj.title);
+                        $last_now.find("a > img").attr("src",obj.img);
+                        $last_now.find(".title > label").text(obj.hot);
+                        $last_now.children("span").text(obj.label);
+                        $last_now.find(".benefit-num").text(obj.edu);
+                        $last_now.find(".agency span").last().text(obj.af);
+                        $last_now.find(".info").css("left",obj.percent).text(obj.percent); //注意控制style里的样式使用css，而不能使用attr
+                        //console.log($last_now.find(".info").attr("left"));
+                        $last_now.find(".start").text(obj.start);
+                        $last_now.find(".stop").text(obj.stop);
+                        $last_now.find(".sum").text(obj.sum);
+                        $last_now.animate({opacity:"1"},500);
+                    });
+                    $("#load").hide();
+                });
+            }
+        }
 
 
-
-
-
-
-
-    $('#clickme').click(function() {
-
-        $('#book').animate({
-
-            opacity: 0.25,
-
-            left: '+=50',
-
-            height: 'toggle'
-
-        }, 5000, function() {
-
-            // Animation complete.
-
-        });
-
-    });
-
-
-
-
+    })
 
 
 

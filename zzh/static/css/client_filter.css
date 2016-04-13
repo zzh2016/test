@@ -3,7 +3,6 @@
         width: 1000px;
     }
 }
-
 * {
     margin: 0px;
     padding:0px;
@@ -116,13 +115,6 @@
 .multiple-delete {
     width: 80px;
 }
-
-/*.selected{
-    border-width:1px;
-    border-style:solid;
-    border-color: #a8a8a8;
-}
-*/
 .selected{
     border-radius:5px;
     background-color:#50B400;
@@ -181,35 +173,39 @@
 }
 #list .text label:before{
     content:'【';
-    margin-right:-4px;
+   /* margin-right:-4px;*/
 }
+
 #list .text label:after{
     content:'】';
-    margin-left:-4px;
+/*margin-left:-4px;*/
 }
 #list a img{
-    position:absolute;
-    left:10px;
-    top:10px;
-    width:240px;
-    height:160px;
+position:absolute;
+left:10px;
+top:10px;
+width:240px;
+height:160px;
 }
 #list .progress{
-    margin:15px 20px 5px 20px;
-    height:10px;
-    position:relative;
+margin:15px 20px 5px 20px;
+height:10px;
+position:relative;
 }
 #list .progress-bar{
-    background-color:#46BFBD;
+background-color:#46BFBD;
 }
 #list .progress .info{
-    font-size:75%;
-    position:absolute;
-    height:10px;
-    line-height:10px;
-    color:#FF6535;
-    font-weight:600;
+font-size:75%;
+position:absolute;
+height:10px;
+line-height:10px;
+color:#FF6535;
+font-weight:600;
 }
+/*
+防止进度条过小，影响文字提示超出容器被隐藏
+*/
 .info-bug{
     margin-left:-30px;
 }
@@ -280,4 +276,10 @@
     margin-left:15px;
     font-weight:bold;
     color: #19574c;
+}
+#load{
+    margin:20px auto;
+    background-color:#FDFDFE;
+    text-align:center;
+    display:none;
 }
